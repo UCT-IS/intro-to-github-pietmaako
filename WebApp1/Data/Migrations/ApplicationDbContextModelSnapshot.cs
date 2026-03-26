@@ -7,6 +7,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApp1.Data.Migrations
 {
+public class ApplicationUser : IdentityUser
+{
+    public string CustomTag { get; set; }
+}
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+    }
+}
+
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
